@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التثبيت والأوامر الأساسية – Nmap في Termux</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+        header {
+            background-color: #f4f6f8;
+            padding: 15px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e1e4e8;
+        }
+        .brand {
+            font-size: 22px;
+            font-weight: bold;
+            color: #d32f2f;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .brand-badge {
+            background-color: #111;
+            color: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 16px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+        }
+        h2 {
+            font-size: 20px;
+            color: #1a1a1a;
+            margin-top: 35px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 8px;
+        }
+        p.desc {
+            color: #555;
+            font-size: 15px;
+            margin-bottom: 8px;
+            margin-top: 20px;
+        }
+        .code-box {
+            background-color: #212529;
+            color: #4ade80;
+            padding: 14px 18px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            direction: ltr;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .code-box span.cmd-arg {
+            color: #e2e8f0;
+        }
+        .copy-btn {
+            background-color: #343a40;
+            color: #fff;
+            border: 1px solid #495057;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: system-ui, sans-serif;
+            transition: 0.2s;
+        }
+        .copy-btn:hover {
+            background-color: #495057;
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #888;
+            font-size: 13px;
+            border-top: 1px solid #eee;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="brand">
+        <span class="brand-badge">&gt;_</span>
+        <span>skibr810-design</span>
+    </div>
+    <nav style="font-size: 14px; color: #666;">دليل أوامر Termux</nav>
+</header>
+
+<div class="container">
+    <h1>التثبيت والأوامر الأساسية – Nmap في Termux</h1>
+    <p class="desc" style="margin-top:0;">يُعد Nmap أحد أقوى أدوات فحص الشبكات، ويُستخدم لاكتشاف الأجهزة والمنافذ المفتوحة والخدمات على الشبكة. يُسهّل Termux تثبيت Nmap على هاتفك الذي يعمل بنظام Android، مما يُمكّنك من إجراء اختبارات الشبكة تماماً كما تفعل على نظام Linux. فيما يلي خطوات التثبيت والأوامر الأساسية.</p>
+
+    <h2>تثبيت</h2>
+    <p class="desc">قم بتحديث حزم Termux الخاصة بك أولاً:</p>
+    <div class="code-box">
+        <code>pkg <span class="cmd-arg">update && pkg upgrade -y</span></code>
+        <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+    </div>
+
+    <p class="desc">قم بتثبيت Nmap:</p>
+    <div class="code-box">
+        <code>pkg <span class="cmd-arg">install nmap -y</span></code>
+        <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+    </div>
+
+    <p class="desc">تحقق من إصدار Nmap:</p>
+    <div class="code-box">
+        <code>nmap <span class="cmd-arg">--version</span></code>
+        <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+    </div>
+
+    <p class="desc">مسح سريع للهدف:</p>
+    <div class="code-box">
+        <code>nmap <span class="cmd-arg">scanme.nmap.org</span></code>
+        <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+    </div>
+
+    <h2>الأوامر الأساسية</h2>
+    <p class="desc">مسح عنوان IP أو موقع ويب:</p>
+    <div class="code-box">
+        <code>nmap <span class="cmd-arg">target-ip-or-domain</span></code>
+        <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+    </div>
+
+    <p class="desc">مسح منفذ محدد:</p>
+    <div class="code-box">
+        <code>nmap <span class="cmd-arg">-p 80 target</span></code>
+        <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+    </div>
+
+    <p class="desc">مسح منافذ متعددة:</p>
+    <div class="code-box">
+        <code>nmap <span class="cmd-arg">-p 80,443,8080 target</span></code>
+        <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+    </div>
+
+    <p class="desc">مسح جميع المنافذ (1–65535):</p>
+    <div class="code-box">
+        <code>nmap <span class="cmd-arg">-p- target</span></code>
+        <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+    </div>
+
+    <p class="desc">الكشف عن الخدمة/الإصدار:</p>
+    <div class="code-box">
+        <code>nmap <span class="cmd-arg">-sV target</span></code>
+        <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+    </div>
+
+    <p class="desc">فحص نظام التشغيل:</p>
+    <div class="code-box">
+        <code>nmap <span class="cmd-arg">-O target</span></code>
+        <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+    </div>
+
+    <p class="desc">فحص شامل (معلومات تفصيلية):</p>
+    <div class="code-box">
+        <code>nmap <span class="cmd-arg">-A target</span></code>
+        <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+    </div>
+
+    <p class="desc">حفظ نتائج الفحص في ملف:</p>
+    <div class="code-box">
+        <code>nmap <span class="cmd-arg">target -oN output.txt</span></code>
+        <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+    </div>
+
+    <p class="desc">قم بإلغاء تثبيت Nmap:</p>
+    <div class="code-box">
+        <code>pkg <span class="cmd-arg">uninstall nmap</span></code>
+        <button class="copy-btn" onclick="copyCode(this)">نسخ</button>
+    </div>
+</div>
+
+<footer>
+    جميع الحقوق محفوظة &copy; skibr810-design
+</footer>
+
+<script>
+    function copyCode(button) {
+        const codeText = button.previousElementSibling.innerText;
+        navigator.clipboard.writeText(codeText);
+        button.innerText = "تم النسخ!";
+        setTimeout(() => { button.innerText = "نسخ"; }, 2000);
+    }
+</script>
+
+</body>
+</html>
